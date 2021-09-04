@@ -3,4 +3,9 @@
     border: 1px solid #00BFFF;
     padding: 5px 10px;
     width: 100px;
+    border-radius: 5px;
+}
+.post_btn:hover {
+    background-color: #00BFFF;
+    color: #fff;
 }

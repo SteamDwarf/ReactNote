@@ -1,8 +1,9 @@
 import React from 'react';
+import classes from './MyInput.module.css';
 
-function MyInput({placeholder, className}) {
+function MyInput(props) {
     return (
-        <textarea placeholder={placeholder} className={className}></textarea>
+        <input {...props} className={classes.input}></input>
     );
 };
 

@@ -1,36 +1,36 @@
 import {React, useState} from 'react';
 import MyBtn from '../UI/MyBtn';
+import MyInput from '../UI/MyInput';
+import MyTextarea from '../UI/MyTextarea';
 
 function PostForm({addNewPost}) {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+  const [post, setPost] = useState({title: "", body: ""});
   
   function createNewPost(e) {
     e.preventDefault();
     
     const newPost = {
-      id: Date.now, title: title, body: body
+      ...post, id: Date.now
     };
     
     addNewPost(newPost);
     
-    setTitle("");
-    setBody("");
+    setPost({title: "", body: ""})
   }
 
   return ( 
     <form className={"post-form"}>
-      <input
-        value={title}
+      <MyInput
+        value={post.title}
         placeholder={"Заголовок"} 
         className={"post-form_input"}
-        onChange={e => setTitle(e.target.value)}
+        onChange={e => setPost({...post, title: e.target.value})}
       />
-      <input
-        value={body}
+      <MyTextarea
+        value={post.body}
         placeholder={"Описание"} 
         className={"post-form_input-big post-form_input"}
-        onChange={e => setBody(e.target.value)}
+        onChange={e => setPost({...post, body: e.target.value})}
       />
       <MyBtn onClick={createNewPost}>
         Добавить пост

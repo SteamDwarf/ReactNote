@@ -15,6 +15,10 @@
     text-align: center;
     width: 90%;
   }
+  .post-sort_block {
+    text-align: left;
+    margin-bottom: 10px;
+  }
   .post-list_title {
     margin-bottom: 15px;
   }
@@ -37,7 +41,7 @@
     box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
     border-radius: 5px;
   }
-  .post-form_input {
+/*   .post-form_input {
     width: 95%;
     margin-bottom: 10px;
     padding: 5px 10px;
@@ -47,4 +51,4 @@
   }
   .post-form_input-big {
     height: 50px;
-  }
+  } */
