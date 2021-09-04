@@ -1,8 +1,14 @@
 import React from 'react';
+import classes from './MyBtn.module.css';
 
-function MyBtn({children, className}) {
+function MyBtn({children, onClick}) {
   return (
-    <button className={className}>{children}</button>
+    <button 
+      onClick={onClick} 
+      className={classes.post_btn}
+    >
+      {children}
+    </button>
   );
 };
 

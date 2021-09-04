@@ -1,7 +1,7 @@
 import React from 'react';
 import MyBtn from '../UI/MyBtn';
 
-function Post ({post}) {
+function Post ({post, deletePost}) {
     return (
         <div className = {"post"}>
             <div className = {"post_text"}>
@@ -12,7 +12,7 @@ function Post ({post}) {
                 {post.body}
               </div>
             </div>
-            <MyBtn className={"post_btn"}>Удалить</MyBtn>
+            <MyBtn onClick={() => deletePost(post)}>Удалить</MyBtn>
         </div>
       );
 };

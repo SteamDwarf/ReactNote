@@ -6,14 +6,14 @@
   .App {
     display: flex;
     flex-direction: column;
-    margin: 30px;
+    margin: 10px;
     align-items: center;
   }
   .post-list {
     margin-top: 10px;
     margin-bottom: 15px;
     text-align: center;
-    width: 80%;
+    width: 90%;
   }
   .post-list_title {
     margin-bottom: 15px;
@@ -25,22 +25,20 @@
     padding: 10px 20px;
     text-align: left;
   }
-  .post_btn {
-    background-color: transparent;
-    border: 1px solid #00BFFF;
-    padding: 0 10px;
-  }
+  
   .post-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-bottom: 40px;
     padding: 15px;
     min-width: 200px;
-    width: 50%;
+    width: 70%;
     box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
     border-radius: 5px;
   }
   .post-form_input {
+    width: 95%;
     margin-bottom: 10px;
     padding: 5px 10px;
     border: 2px solid #00BFFF;
