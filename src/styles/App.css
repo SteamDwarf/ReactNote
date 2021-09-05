@@ -15,7 +15,9 @@
     text-align: center;
     width: 90%;
   }
-  .post-sort_block {
+  .post-viewe_block {
+    display: flex;
+    justify-content: space-between;
     text-align: left;
     margin-bottom: 10px;
   }

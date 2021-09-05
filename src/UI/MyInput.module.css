@@ -1,4 +1,4 @@
-.input {
+.titleInput {
     width: 95%;
     margin-bottom: 10px;
     padding: 5px 10px;
@@ -6,4 +6,12 @@
     outline: none;
     overflow: hidden;
     height: 50px;
+}
+.searchInput {
+    width: 200px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 2px solid #00BFFF;
+    outline: none;
+    overflow: hidden;
 }

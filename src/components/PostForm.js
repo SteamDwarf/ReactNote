@@ -9,8 +9,12 @@ function PostForm({addNewPost}) {
   function createNewPost(e) {
     e.preventDefault();
     
+    if(post.title === "" && post.body === "") {
+      return;
+    }
+
     const newPost = {
-      ...post, id: Date.now
+      ...post, id: Date.now()
     };
     
     addNewPost(newPost);
@@ -23,13 +27,12 @@ function PostForm({addNewPost}) {
       <MyInput
         value={post.title}
         placeholder={"Заголовок"} 
-        className={"post-form_input"}
         onChange={e => setPost({...post, title: e.target.value})}
+        className={"titleInput"}
       />
       <MyTextarea
         value={post.body}
         placeholder={"Описание"} 
-        className={"post-form_input-big post-form_input"}
         onChange={e => setPost({...post, body: e.target.value})}
       />
       <MyBtn onClick={createNewPost}>

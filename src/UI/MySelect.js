@@ -1,8 +1,11 @@
 import React from 'react';
 
-function MySelect({options, changeSortOption}) {
+function MySelect({options, changeSortOption, curSortOption}) {
   return (
-    <select onChange={(e) => changeSortOption(e.target.value)}>
+    <select 
+      onChange={(e) => changeSortOption(e.target.value)}
+      value={curSortOption}
+    >
       <option disabled value='default'>Сортировка по</option>
 
       {options.map(op => 
