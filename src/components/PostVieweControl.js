@@ -16,6 +16,7 @@ function PostVieweControl(props) {
     }
     function searchPosts(value) {
         setSearchValue(value);
+        props.findPosts(value);
     }
 
     return (
