@@ -1,6 +1,7 @@
 import {React, useState} from "react";
 import MySelect from "../UI/MySelect";
 import MyInput from "../UI/MyInput";
+import MyBtn from "../UI/MyBtn";
 
 function PostVieweControl(props) {
     const [curSortOption, setCurSortOption] = useState('');
@@ -26,6 +27,9 @@ function PostVieweControl(props) {
                 changeSortOption={changeSortOption} 
                 options={sortOptions}
             />
+            <MyBtn onClick={() => props.setModalState(true)}>
+              Добавить пост
+            </MyBtn>
             <MyInput 
                 value={searchValue}
                 placeholder={'Поиск'}

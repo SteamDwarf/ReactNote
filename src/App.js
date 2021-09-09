@@ -1,8 +1,9 @@
 import {React, useState, useMemo} from 'react';
 import "./styles/App.css";
 import PostsList from './components/PostsList';
-import PostForm from './components/PostForm';
+import MyModal from './UI/MyModal';
 import PostVieweControl from './components/PostVieweControl';
+import MyBtn from './UI/MyBtn';
 
 function App () {
  
@@ -13,6 +14,7 @@ function App () {
   ]);
   const [curSortOption, setCurSortOption] = useState('title');
   const [postFilter, setPostFilter] = useState('');
+  const [modalState, setModalState] = useState(false);
 
   const sortedPosts = useMemo(() => {
     return ([...posts].sort((a,b) => a[curSortOption].localeCompare(b[curSortOption]))
@@ -36,9 +38,9 @@ function App () {
   }, [postFilter, posts]);
 
 
-  function addNewPost(newPost) {
+  /* function addNewPost(newPost) {
     setPosts([...posts, newPost]);
-  }
+  } */
   function deletePost(delPost) {
     setPosts(posts.filter(post => post.id !== delPost.id));
   }
@@ -53,15 +55,19 @@ function App () {
   
   return (
     <div className="App">
-      <PostForm addNewPost={addNewPost}/>
-      <PostVieweControl
-        changePostOrder={changePostOrder}
-        findPosts={findPosts} 
+      <MyModal 
+        posts={posts}
+        setPosts={setPosts}
+        modalState={modalState}
+        setModalState={setModalState}
       />
           <div className={"post-list"}>
             <PostsList 
               posts={sortedAndFilteredPosts}
               deletePost={deletePost}
+              changePostOrder={changePostOrder}
+              findPosts={findPosts}
+              setModalState={setModalState} 
             />
           </div>
       

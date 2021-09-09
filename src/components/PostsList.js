@@ -1,11 +1,19 @@
 import React from 'react';
 import Post from './Post';
+import PostVieweControl from './PostVieweControl';
 
-function PostsList({posts, deletePost}) {
-  if(posts.length === 0) {
+function PostsList(props) {
+  console.log(props);
+
+  if(props.posts.length === 0) {
     return (
       <div>
-        <h1>Посты не найдены</h1>
+        <h1 className={"post-list_title"}>Посты не найдены</h1>
+        <PostVieweControl
+          changePostOrder={props.changePostOrder}
+          findPosts={props.findPosts}
+          setModalState={props.setModalState} 
+        />
       </div>
     );
   }
@@ -13,9 +21,13 @@ function PostsList({posts, deletePost}) {
   return (
     <div>
       <h1 className={"post-list_title"}>Список постов</h1>
-
-      {posts.map(post => 
-        <Post deletePost={deletePost} post={post} key={post.id}/>
+      <PostVieweControl
+        changePostOrder={props.changePostOrder}
+        findPosts={props.findPosts}
+        setModalState={props.setModalState} 
+      />
+      {props.posts.map(post => 
+        <Post deletePost={props.deletePost} post={post} key={post.id}/>
       )}
     </div>
   );

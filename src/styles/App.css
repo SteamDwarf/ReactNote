@@ -18,6 +18,7 @@
   .post-viewe_block {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     text-align: left;
     margin-bottom: 10px;
   }
@@ -36,21 +37,4 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 40px;
-    padding: 15px;
-    min-width: 200px;
-    width: 70%;
-    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
-    border-radius: 5px;
   }
-/*   .post-form_input {
-    width: 95%;
-    margin-bottom: 10px;
-    padding: 5px 10px;
-    border: 2px solid #00BFFF;
-    outline: none;
-    overflow: hidden;
-  }
-  .post-form_input-big {
-    height: 50px;
-  } */
