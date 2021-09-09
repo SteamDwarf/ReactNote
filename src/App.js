@@ -54,16 +54,16 @@ function App () {
   return (
     <div className="App">
       <PostForm addNewPost={addNewPost}/>
-      {
-        posts.length !== 0
-        ?
+      <PostVieweControl
+        changePostOrder={changePostOrder}
+        findPosts={findPosts} 
+      />
           <div className={"post-list"}>
-            <PostVieweControl changePostOrder={changePostOrder} findPosts={findPosts} />
-            <PostsList posts={sortedAndFilteredPosts} deletePost={deletePost}/>
+            <PostsList 
+              posts={sortedAndFilteredPosts}
+              deletePost={deletePost}
+            />
           </div>
-        :
-          <h1>Посты не найдены</h1>
-      }
       
     </div>
   );
