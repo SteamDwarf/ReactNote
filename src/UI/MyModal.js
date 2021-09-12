@@ -9,8 +9,8 @@ function MyModal({posts, setPosts, modalState, setModalState}) {
 
     if(modalState) {
         return (
-            <div className={styles.modal}>
-                <div className={styles['modal_form']}>
+            <div className={styles.modal} onClick={() => setModalState(false)}>
+                <div className={styles['modal_form']} onClick={(e) => e.stopPropagation()}>
                     <div 
                         className={styles['modal_close']} 
                         onClick={() => setModalState(false)}

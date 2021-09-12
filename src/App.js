@@ -1,46 +1,34 @@
-import {React, useState, useMemo} from 'react';
+import {React, useState, useEffect} from 'react';
 import "./styles/App.css";
 import PostsList from './components/PostsList';
 import MyModal from './UI/MyModal';
-import PostVieweControl from './components/PostVieweControl';
-import MyBtn from './UI/MyBtn';
+import { useSortedAndFilteredPosts } from './hooks/usePosts';
+import PostService from './API/PostService';
 
 function App () {
  
   const [posts, setPosts] = useState([
-    {id: "1", title: "Java Script", body: "Java Script крутой язык программирования"},
+/*     {id: "1", title: "Java Script", body: "Java Script крутой язык программирования"},
     {id: "2", title: "C#", body: "С# тоже крутой язык программирования"},
-    {id: "3", title: "Python", body: "Ну и Python, куда же без него"},
+    {id: "3", title: "Python", body: "Ну и Python, куда же без него"}, */
   ]);
   const [curSortOption, setCurSortOption] = useState('title');
   const [postFilter, setPostFilter] = useState('');
   const [modalState, setModalState] = useState(false);
+  const [isPostLoading, setIsPostLoading] = useState(false);
+  const sortedAndFilteredPosts = useSortedAndFilteredPosts(postFilter, posts, curSortOption);
 
-  const sortedPosts = useMemo(() => {
-    return ([...posts].sort((a,b) => a[curSortOption].localeCompare(b[curSortOption]))
-    );
-  }, [posts, curSortOption]);
-  
-  const sortedAndFilteredPosts = useMemo(() => {
-    let findedPosts = [];
-    if(postFilter === '') {
-      findedPosts = sortedPosts;
-    } else {
-      sortedPosts.forEach(post => {
-        let postTitle = post.title.toLowerCase();
-        let postBody = post.body.toLowerCase();
-        if(postTitle.includes(postFilter) || postBody.includes(postFilter)) {
-          findedPosts.push(post);
-        }
-      });
-    }
-    return findedPosts;
-  }, [postFilter, posts]);
+  async function fetchPosts() {
+    setIsPostLoading(true);
+    const gettedPosts = await PostService.getAll();
+    setPosts(gettedPosts);
+    setIsPostLoading(false);
+  }
 
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
-  /* function addNewPost(newPost) {
-    setPosts([...posts, newPost]);
-  } */
   function deletePost(delPost) {
     setPosts(posts.filter(post => post.id !== delPost.id));
   }
@@ -68,6 +56,7 @@ function App () {
               changePostOrder={changePostOrder}
               findPosts={findPosts}
               setModalState={setModalState} 
+              isPostLoading={isPostLoading}
             />
           </div>
       

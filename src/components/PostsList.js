@@ -1,9 +1,15 @@
 import React from 'react';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Post from './Post';
 import PostVieweControl from './PostVieweControl';
+import Loader from '../UI/Loader';
 
 function PostsList(props) {
-  console.log(props);
+  if(props.isPostLoading) {
+    return (
+      <Loader />
+    );
+  }
 
   if(props.posts.length === 0) {
     return (
@@ -26,9 +32,17 @@ function PostsList(props) {
         findPosts={props.findPosts}
         setModalState={props.setModalState} 
       />
-      {props.posts.map(post => 
-        <Post deletePost={props.deletePost} post={post} key={post.id}/>
-      )}
+      <TransitionGroup>
+        {props.posts.map(post => 
+          <CSSTransition
+            key={post.id}
+            timeout={500}
+            classNames="post"
+          >
+            <Post deletePost={props.deletePost} post={post}/>
+          </CSSTransition>
+        )}
+      </TransitionGroup>
     </div>
   );
 };
